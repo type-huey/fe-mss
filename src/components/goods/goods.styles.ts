@@ -2,7 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 100%;
-  margin-top: 275px;
+  margin-top: 240px;
   margin-bottom: 100px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
