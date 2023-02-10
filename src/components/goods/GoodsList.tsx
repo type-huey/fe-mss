@@ -11,19 +11,20 @@ import Goods from '@/components/goods/Goods';
 import * as S from '@/components/goods/goods.styles';
 
 const GoodsList = () => {
-  const [target, setTarget] = useState<HTMLLIElement | null>(null);
+  const [goodsLastElement, setGoodsLastElement] =
+    useState<HTMLLIElement | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { pagination } = useRecoilValue(goodsListAtom);
   const filteredTag = useRecoilValue(filteredTagSelector);
   const filteredGoodsList = useRecoilValue(goodsSelector(filteredTag));
   const { fetchGoodsList } = useGoods();
 
-  useInfiniteScroll(target, () => {
+  useInfiniteScroll(goodsLastElement, () => {
     getGoodsList(pagination.page);
   });
 
   const setRefTarget = useCallback((node: HTMLLIElement) => {
-    setTarget(node);
+    setGoodsLastElement(node);
   }, []);
 
   const getGoodsList = async (page: number) => {

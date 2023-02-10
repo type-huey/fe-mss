@@ -31,8 +31,9 @@ const Goods = forwardRef<HTMLLIElement, PropsTypes>(
               src={imageUrl}
               isSoldOut={isSoldOut}
               onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                e.currentTarget.src =
-                  'https://image.msscdn.net/musinsaUI/homework/data/img.jpg';
+                e.currentTarget.src = `${
+                  import.meta.env.VITE_API_IMAGE_SERVER
+                }/data/img.jpg`;
               }}
             />
           </a>

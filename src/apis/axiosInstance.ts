@@ -20,7 +20,7 @@ export const request = (config: AxiosRequestConfig) => {
         else reject(response);
       })
       .catch(error => {
-        console.log(error.response);
+        console.error(error.response);
         reject(error.response);
       });
   });

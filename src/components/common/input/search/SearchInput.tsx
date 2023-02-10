@@ -32,7 +32,7 @@ const SearchInput = () => {
         <S.Ul>
           {autoCompleteGoodsList.map(keyword => (
             <S.Li
-              onClick={() => handleSearch(keyword)}
+              onClick={() => handleSearchGoods(keyword)}
               dangerouslySetInnerHTML={{
                 __html: highlightText(keyword, deferredValue)
               }}
@@ -43,7 +43,7 @@ const SearchInput = () => {
     );
   }, [deferredValue, filteredGoodsList]);
 
-  const handleSearch = (value: string) => {
+  const handleSearchGoods = (value: string) => {
     handleFilter({
       id: 'search',
       isSubmit: true,
@@ -54,7 +54,7 @@ const SearchInput = () => {
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     if (!inputRef.current) return;
-    handleSearch(inputRef.current.value);
+    handleSearchGoods(inputRef.current.value);
     inputRef.current.value = '';
   };
 

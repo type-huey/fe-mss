@@ -1,11 +1,11 @@
-import { request } from "@/apis/axiosInstance";
-import { goodsListAtom } from "@/store/goods";
-import { useSetRecoilState } from "recoil";
+import { request } from '@/apis/axiosInstance';
+import { goodsListAtom } from '@/store/goods';
+import { useSetRecoilState } from 'recoil';
 
 async function requestGoodsList(pageNo: number): Promise<any> {
   const response = await request({
-    method: "GET",
-    url: `/data/goods${pageNo}.json`,
+    method: 'GET',
+    url: `/data/goods${pageNo}.json`
   });
 
   return response;
@@ -22,16 +22,16 @@ export function useGoods() {
       const { list } = await requestGoodsList(params);
 
       setIsLoading(false);
-      setGoodsList((acc) => ({
+      setGoodsList(acc => ({
         goodsList: [...acc.goodsList, ...list],
-        pagination: { ...acc.pagination, page: acc.pagination.page + 1 },
+        pagination: { ...acc.pagination, page: acc.pagination.page + 1 }
       }));
     } catch (e) {
-      console.log(e);
+      console.error(e, '상품 정보를 가져올 수 없습니다.');
     }
   }
 
   return {
-    fetchGoodsList,
+    fetchGoodsList
   };
 }
