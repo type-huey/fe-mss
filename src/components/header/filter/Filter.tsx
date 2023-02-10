@@ -16,10 +16,16 @@ const Filter = () => {
     [tagList]
   );
 
+  const filterdList = useMemo(
+    () => tagList.filter(tag => tag.isFiltered),
+    [tagList]
+  );
+
   return (
     <S.Wrapper>
       <FilterList filterList={tagList} shape={TAG_SHAPE_TYPE.ROUND} />
       {isSearching && <SearchInput />}
+      <FilterList filterList={filterdList} shape={TAG_SHAPE_TYPE.RECT} />
     </S.Wrapper>
   );
 };
