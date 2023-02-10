@@ -20,6 +20,10 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "src/assets/styles/styled.d.ts"],
+  "include": [
+    "src",
+    "src/assets/styles/styled.d.ts",
+    "src/components/common/icon/svg.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
