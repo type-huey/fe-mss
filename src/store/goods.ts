@@ -1,6 +1,6 @@
 import { atom, selectorFamily } from 'recoil';
 import { TTag } from '@/store/tag';
-import { fillteredGoods } from '@/utils/utils';
+import { fillteredGoods, makeSuggestionList } from '@/utils/utils';
 
 export type TGoods = {
   brandLinkUrl: string;
@@ -37,4 +37,12 @@ export const goodsSelector = selectorFamily<TGoods[], TTag[]>({
     filterOption =>
     ({ get }) =>
       fillteredGoods(get(goodsListAtom).goodsList, filterOption)
+});
+
+export const autoCompleteGoodsSelector = selectorFamily<string[], string>({
+  key: 'aotu-searching-goods-selector',
+  get:
+    keyword =>
+    ({ get }) =>
+      makeSuggestionList(get(goodsListAtom).goodsList, keyword)
 });

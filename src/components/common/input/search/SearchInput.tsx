@@ -1,7 +1,17 @@
-import { SyntheticEvent, useRef, useState } from 'react';
+import {
+  SyntheticEvent,
+  useRef,
+  useState,
+  useDeferredValue,
+  useMemo
+} from 'react';
 import Icon from '@/components/common/icon/Icon';
 import { ICON_TYPE } from '@/constants/constants';
 import { useFilter } from '@/hooks/useFilter';
+import { filteredTagSelector } from '@/store/tag';
+import { highlightText } from '@/utils/utils';
+import { useRecoilValue } from 'recoil';
+import { autoCompleteGoodsSelector, goodsSelector } from '@/store/goods';
 
 import * as S from '@/components/common/input/search/searchInput.styles';
 
@@ -9,6 +19,29 @@ const SearchInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { handleFilter } = useFilter();
   const [keyword, setKeyword] = useState('');
+  const deferredValue = useDeferredValue(keyword);
+  const filteredTag = useRecoilValue(filteredTagSelector);
+  const filteredGoodsList = useRecoilValue(goodsSelector(filteredTag));
+  const autoCompleteGoodsList = useRecoilValue(
+    autoCompleteGoodsSelector(deferredValue)
+  );
+
+  const suggestionList = useMemo(() => {
+    return (
+      autoCompleteGoodsList.length > 0 && (
+        <S.Ul>
+          {autoCompleteGoodsList.map(keyword => (
+            <S.Li
+              onClick={() => handleSearch(keyword)}
+              dangerouslySetInnerHTML={{
+                __html: highlightText(keyword, deferredValue)
+              }}
+            />
+          ))}
+        </S.Ul>
+      )
+    );
+  }, [deferredValue, filteredGoodsList]);
 
   const handleSearch = (value: string) => {
     handleFilter({
@@ -38,6 +71,7 @@ const SearchInput = () => {
         </button>
         <S.Input ref={inputRef} onChange={handleSearchInputChange} />
       </S.Inner>
+      {suggestionList}
     </S.Wrapper>
   );
 };

@@ -27,3 +27,30 @@ export const fillteredGoods = (
 
   return _filteredGoods;
 };
+
+export const makeSuggestionList = (goodsList: TGoods[], keyword: string) => {
+  const MAX_COUNT = 4;
+
+  const _makeSuggestionList = [
+    ...new Set([
+      ...goodsList.map(goods => goods.brandName),
+      ...goodsList.map(goods => goods.goodsName)
+    ])
+  ];
+
+  const _suggestionsList = keyword
+    ? _makeSuggestionList
+        .filter(title => title.includes(keyword))
+        .slice(0, MAX_COUNT)
+    : [];
+
+  return _suggestionsList;
+};
+
+export const highlightText = (keyword: string, searchKeyword: string) => {
+  var regex = new RegExp(searchKeyword, 'gi');
+  var response = keyword.replace(regex, function (str) {
+    return `<span style="color: #0078ff;">${str}</span>`;
+  });
+  return response;
+};
