@@ -17,6 +17,13 @@ export const TagList = styled.div`
   padding: 10px 7px;
 `;
 
+export const FilteredWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 10px;
+`;
+
 export const Tag = styled.button<TagProps>`
   ${({ theme: { colors }, isSelected, isActive, shape }) => css`
     color: #777;

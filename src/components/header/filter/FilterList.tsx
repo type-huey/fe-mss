@@ -14,17 +14,19 @@ const FilterList = ({ filterList, shape }: PropsTypes) => {
   const { handleFilter } = useFilter();
 
   return (
-    <S.TagList>
-      {filterList.length > 0 &&
-        filterList.map(tag => (
-          <Tag
-            key={tag.id}
-            tag={tag}
-            shape={shape}
-            clickHandler={handleFilter}
-          />
-        ))}
-    </S.TagList>
+    <>
+      <S.TagList>
+        {filterList.length > 0 &&
+          filterList.map(tag => (
+            <Tag
+              key={tag.id}
+              tag={tag}
+              shape={shape}
+              clickHandler={handleFilter}
+            />
+          ))}
+      </S.TagList>
+    </>
   );
 };
 
