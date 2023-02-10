@@ -1,11 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useRef,
-  useCallback,
-  RefObject
-} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useGoods } from '@/hooks/useGoods';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import { useRecoilValue } from 'recoil';
@@ -43,31 +36,33 @@ const GoodsList = () => {
   }, []);
 
   return (
-    <S.Wrapper>
-      {filteredGoodsList.length > 0 ? (
-        filteredGoodsList.map((goods, index) => {
-          let lastEl = index === filteredGoodsList.length - 1;
+    <>
+      <S.Wrapper>
+        {filteredGoodsList.length > 0 ? (
+          filteredGoodsList.map((goods, index) => {
+            let lastEl = index === filteredGoodsList.length - 1;
 
-          return (
-            <Goods
-              key={index}
-              ref={lastEl ? setRefTarget : null}
-              goods={goods}
-            />
-          );
-        })
-      ) : (
-        <S.IconWrapper>
-          <Icon icon={ICON_TYPE.EMPTY} width={'90px'} fill={'#D5D5D5'} />
-          <S.EmptyMessage>검색 결과 없음</S.EmptyMessage>
-        </S.IconWrapper>
-      )}
+            return (
+              <Goods
+                key={index}
+                ref={lastEl ? setRefTarget : null}
+                goods={goods}
+              />
+            );
+          })
+        ) : (
+          <S.IconWrapper>
+            <Icon icon={ICON_TYPE.EMPTY} width={'90px'} fill={'#D5D5D5'} />
+            <S.EmptyMessage>검색 결과 없음</S.EmptyMessage>
+          </S.IconWrapper>
+        )}
+      </S.Wrapper>
       {isLoading && (
         <S.LoadingIndicator>
           <Icon icon={ICON_TYPE.LOADING} width={'1rem'} />
         </S.LoadingIndicator>
       )}
-    </S.Wrapper>
+    </>
   );
 };
 
