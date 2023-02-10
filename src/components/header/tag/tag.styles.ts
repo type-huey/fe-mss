@@ -71,6 +71,7 @@ export const Tag = styled.button<TagProps>`
       path {
         fill: ${colors.blue};
       }
+
       :hover {
         opacity: 1;
       }
@@ -87,6 +88,16 @@ export const Tag = styled.button<TagProps>`
       }
       :hover {
         opacity: 1;
+      }
+    `}
+
+    ${isSelected &&
+    shape === 'rect' &&
+    css`
+      background-color: ${colors.blue};
+      color: ${colors.white};
+      path {
+        fill: ${colors.white};
       }
     `}
   `}
