@@ -17,8 +17,9 @@ export const fillteredGoods = (
     if (option === 'searching') {
       const keyword = filterOptions.find(tag => tag.type === 'search')
         ?.keyword as string;
-      _filteredGoods = _filteredGoods.filter(goods =>
-        goods.goodsName.includes(keyword)
+      _filteredGoods = _filteredGoods.filter(
+        goods =>
+          goods.goodsName.includes(keyword) || goods.brandName.includes(keyword)
       );
     } else {
       _filteredGoods = _filteredGoods.filter(goods => goods[option]);
