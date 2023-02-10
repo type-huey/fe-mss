@@ -9,7 +9,8 @@ export const theme: DefaultTheme = {
     green: '#18A286',
     gray1: '#777777',
     gray2: '#D5D5D5',
-    gray3: '#AAAAAA'
+    gray3: '#AAAAAA',
+    gray4: '#F1F1F1'
   },
 
   fontWeight: {
