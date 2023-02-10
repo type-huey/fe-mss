@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
 export type TFilterOption =
   | 'searching'
@@ -52,4 +52,9 @@ export const tagListAtom = atom<TTag[]>({
       isFiltered: false
     }
   ]
+});
+
+export const filteredTagSelector = selector<TTag[]>({
+  key: 'tag-selector',
+  get: ({ get }) => get(tagListAtom).filter((tag: TTag) => tag.isFiltered)
 });
