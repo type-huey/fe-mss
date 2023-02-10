@@ -15,7 +15,11 @@ import { autoCompleteGoodsSelector, goodsSelector } from '@/store/goods';
 
 import * as S from '@/components/common/input/search/searchInput.styles';
 
-const SearchInput = () => {
+type PropsTypes = {
+  maxlength: number;
+};
+
+const SearchInput = ({ maxlength }: PropsTypes) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { handleFilter } = useFilter();
   const [keyword, setKeyword] = useState('');
@@ -69,7 +73,11 @@ const SearchInput = () => {
         <button type="submit">
           <Icon icon={ICON_TYPE.SEARCH} width="18px" fill="#fff" />
         </button>
-        <S.Input ref={inputRef} onChange={handleSearchInputChange} />
+        <S.Input
+          ref={inputRef}
+          onChange={handleSearchInputChange}
+          maxLength={maxlength || 15}
+        />
       </S.Inner>
       {suggestionList}
     </S.Wrapper>

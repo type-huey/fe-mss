@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface IInput extends React.HTMLProps<HTMLInputElement> {
   ref: React.RefObject<HTMLInputElement>;
+  maxLength: number;
 }
 
 export const Wrapper = styled.form`
