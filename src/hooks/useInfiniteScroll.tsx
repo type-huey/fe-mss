@@ -1,17 +1,20 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 const SCROLL_OPTION = {
   root: null,
   threshold: 0.5,
-  rootMargin: "-100px -50px",
+  rootMargin: '-100px -50px'
 };
 const useInfiniteScroll = (
   target: HTMLLIElement | null,
   callback: () => void
 ) => {
   useEffect(() => {
-    const handleIntersection = (entries: any, observer: any) => {
-      entries.forEach((entry: any) => {
+    const handleIntersection = (
+      entries: IntersectionObserverEntry[],
+      observer: IntersectionObserver
+    ) => {
+      entries.forEach(entry => {
         if (!entry.isIntersecting) {
           return;
         }
