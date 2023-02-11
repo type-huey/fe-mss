@@ -18,7 +18,7 @@
 | <img src="https://img.shields.io/badge/Recoil-003791?style=flat&logo=Atom&logoColor=white"/>           | 상태 관리 용이성과 selector는 readonly 반환으로 side-effects를 줄이기 위해 사용하였습니다 |
 | <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white"/> | 컴파일 단계에서 오류 확인과 타입지정으로 가독성과 디버깅을 쉽게 하기위해 사용하였습니다.  |
 | <img src="https://img.shields.io/badge/Vite-646CFF?style=flat&logo=Vite&logoColor=white"/>             | 빌드 속도와 프로젝트를 빠르게 설정할 수 있어 사용하였습니다                               |
-| <img src="https://img.shields.io/badge/Netlify-00C7B7?style=flat&logo=Netlify&logoColor=white"/>       | 프로젝트 배포 용이                                                                        |
+| <img src="https://img.shields.io/badge/Netlify-00C7B7?style=flat&logo=Netlify&logoColor=white"/>       | 프로젝트 배포 용이(CD)                                                                        |
 
 ## other
 
@@ -99,8 +99,10 @@ react18+, recoil, storybook, vite 평소 사용해 보고 싶었던 스택 위�
 setTimeout으로 직접 구현하지 않고 ***✨useDeferredValue✨***를 이용하여 검색 키워드를 넘겨주어 이벤트를 최소화해주었다. <br/>
 
 검색으로 인한 키워드는 여러 개를 필터링할 수 있게 할까 하다가 재 검색시 이전 키워드를 수정해주는 방식을 사용했다.<br/>
+        
+또한 상품명 전체를 입력하지 않아도 입력한 키워드가 포함 되어있다면 상품을 랜더링 시켜주었다. <br/>
 
-추가로 리셋 아이콘이 있었는데 기능 구현 사항에 내용이 없어 무신사 사이트 참고결과 모든 필터링을 제거해주는 기능이여서 추가했다.
+추가로 리셋 아이콘이 있었는데 기능 구현 사항에 내용이 없어 무신사 사이트 참고결과 모든 필터링을 제거해주는 기능이여서 추가했다.<br/>
 
 ### 5. 기타
 
