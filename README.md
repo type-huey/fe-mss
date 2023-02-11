@@ -59,11 +59,9 @@
 
 ### 1. 프로젝트 시작전 TMI
 
-하필 왜 과제를 할 때 일이 바빠지는지... 3일만에 완성해야해서 집중해서 해야겠다고 다짐하고 돌입했다! <br/>
-시간은 없는데 하고싶은건 많아 코드에 대한 요구사항은 일단 보지도 않고 프로젝트 환경설정에 욕심이 앞섰다. <br/>
-결국 딥하게 하지 못할바에 과한거같아 하지못한 Docker, 테스트코드... 등이 있었다 <br/>
-
-그래서 최근들어 사용하기 시작한 기술스택을 위주로 과제를 해봐야겠다고 생각했다 (vite, recoil..) <br/>
+하필 왜 과제를 할 때 일이 바빠지는지... 수요일부터 집중해서 시작하였다. <br/>
+시간은 여유롭지 않았지만 하고싶은건 많아 코드에 대한 요구사항은 일단 보지도 않고 프로젝트 환경설정에 욕심이 앞섰다. <br/>
+react18+, recoil, storybook, vite 평소 사용 해보고 싶었던 스택 위주로 해보려고 했다. (결국 소스코드보다 프로젝트 환경설정이 더오래걸렸다...) <br/>
 
 ### 2. Header
 
@@ -98,5 +96,15 @@
 setTimeout으로 직접 구현하지 않고 useDeferredValue를 이용하여 검색 키워드를 넘겨주어 이벤트를 최소화 해주었다. <br/>
 
 검색으로 인한 키워드는 여러개를 필터링 할 수 있게 할까 하다가 재검색시 이전 키워드를 수정해주는 방식을 사용했다.<br/>
+
+### 5. 기타
+
+vite 빌드환경에서 storybook을 세팅 해보고 싶었다.(...지옥의길) <br/>
+다양한 이슈들이 괴롭혔다 <br/>
+unsupportted <br/>
+Failed to fetch dynamically imported module (alias issue) <br/>
+svg declear <br/>
+   다행히 오류는 잡혔고..노션 정리도 하면서 좋은 경험이 되었다<br/>
+![스크린샷 2023-02-12 오전 12 19 12](https://user-images.githubusercontent.com/20451074/218266474-6fbcc575-d71e-4f47-b4d6-a75c3be35691.png)
 
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
