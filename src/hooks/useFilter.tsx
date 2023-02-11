@@ -33,7 +33,18 @@ export function useFilter() {
     setTagList(_filteredList);
   }
 
+  function handleResetFilter() {
+    let _initializedTagList = tagList.map(tag => {
+      let _tag = { ...tag };
+      _tag.isFiltered = false;
+      return _tag;
+    });
+
+    setTagList(_initializedTagList);
+  }
+
   return {
-    handleFilter
+    handleFilter,
+    handleResetFilter
   };
 }

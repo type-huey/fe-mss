@@ -5,10 +5,12 @@ import SearchInput from '@/components/common/input/search/SearchInput';
 import FilterList from '@/components/header/filter/FilterList';
 import { FILTER_TYPE, ICON_TYPE, TAG_SHAPE_TYPE } from '@/constants/constants';
 import { tagListAtom } from '@/store/tag';
+import { useFilter } from '@/hooks/useFilter';
 
 import * as S from '@/components/header/tag/tag.styles';
 
 const Filter = () => {
+  const { handleResetFilter } = useFilter();
   const tagList = useRecoilValue(tagListAtom);
 
   const isSearching = useMemo(
@@ -29,7 +31,9 @@ const Filter = () => {
       <S.FilteredWrapper>
         <FilterList filterList={filterdList} shape={TAG_SHAPE_TYPE.RECT} />
         {filterdList.length > 0 && (
-          <Icon icon={ICON_TYPE.REFRESH} width={'20px'} fill={'#979797'} />
+          <S.IconWrapper onClick={() => handleResetFilter()}>
+            <Icon icon={ICON_TYPE.REFRESH} width={'20px'} fill={'#979797'} />{' '}
+          </S.IconWrapper>
         )}
       </S.FilteredWrapper>
     </S.Wrapper>

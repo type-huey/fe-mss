@@ -38,6 +38,7 @@ export const goodsSelector = selectorFamily<TGoods[], TTag[]>({
     filterOption =>
     ({ get }) => {
       const keyword = get(searchingKeywordSelector);
+
       return fillteredGoods(
         get(goodsListAtom).goodsList,
         filterOption,

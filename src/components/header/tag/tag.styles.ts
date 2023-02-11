@@ -109,3 +109,7 @@ export const Tag = styled.button<TagProps>`
     `}
   `}
 `;
+
+export const IconWrapper = styled.div`
+  cursor: pointer;
+`;
