@@ -58,3 +58,14 @@ export const filteredTagSelector = selector<TTag[]>({
   key: 'tag-selector',
   get: ({ get }) => get(tagListAtom).filter((tag: TTag) => tag.isFiltered)
 });
+
+export const searchingKeywordSelector = selector<string | undefined>({
+  key: 'search-keyword',
+  get: ({ get }) => {
+    const filter = get(tagListAtom).filter(
+      (tag: TTag) => tag.type === 'search'
+    );
+
+    return filter[0].keyword;
+  }
+});

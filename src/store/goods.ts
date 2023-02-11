@@ -1,3 +1,4 @@
+import { searchingKeywordSelector } from './tag';
 import { atom, selectorFamily } from 'recoil';
 import { TTag } from '@/store/tag';
 import { fillteredGoods, makeSuggestionList } from '@/utils/utils';
@@ -35,8 +36,14 @@ export const goodsSelector = selectorFamily<TGoods[], TTag[]>({
   key: 'goods-selector',
   get:
     filterOption =>
-    ({ get }) =>
-      fillteredGoods(get(goodsListAtom).goodsList, filterOption)
+    ({ get }) => {
+      const keyword = get(searchingKeywordSelector);
+      return fillteredGoods(
+        get(goodsListAtom).goodsList,
+        filterOption,
+        keyword
+      );
+    }
 });
 
 export const autoCompleteGoodsSelector = selectorFamily<string[], string>({
