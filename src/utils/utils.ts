@@ -57,8 +57,8 @@ const curringFilter =
     _filteredGoods = isSearchingKeyword
       ? _filteredGoods.filter(
           goods =>
-            goods.goodsName === isSearchingKeyword ||
-            goods.brandName === isSearchingKeyword
+            goods.goodsName.includes(isSearchingKeyword) ||
+            goods.brandName.includes(isSearchingKeyword)
         )
       : _filteredGoods;
 
