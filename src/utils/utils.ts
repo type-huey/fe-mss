@@ -6,12 +6,10 @@ export const fillteredGoods = (
   filterOptions: TTag[]
 ): TGoods[] => {
   const _filters = filterOptions.map(filter => filter.option);
-
   let _filteredGoods = goodsList;
 
-  /** base goodsList */
-  if (!filterOptions.length)
-    return _filteredGoods.filter(goods => !goods.isSoldOut);
+  if (!_filters.includes('isSoldOut'))
+    _filteredGoods = _filteredGoods.filter(goods => !goods.isSoldOut);
 
   _filters.forEach(option => {
     if (option === 'searching') {
@@ -19,7 +17,8 @@ export const fillteredGoods = (
         ?.keyword as string;
       _filteredGoods = _filteredGoods.filter(
         goods =>
-          goods.goodsName.includes(keyword) || goods.brandName.includes(keyword)
+          goods.goodsName.toUpperCase().includes(keyword.toUpperCase()) ||
+          goods.brandName.toUpperCase().includes(keyword.toUpperCase())
       );
     } else {
       _filteredGoods = _filteredGoods.filter(goods => goods[option]);
@@ -41,7 +40,7 @@ export const makeSuggestionList = (goodsList: TGoods[], keyword: string) => {
 
   const _suggestionsList = keyword
     ? _makeSuggestionList
-        .filter(title => title.includes(keyword))
+        .filter(title => title.toUpperCase().includes(keyword.toUpperCase()))
         .slice(0, MAX_COUNT)
     : [];
 
