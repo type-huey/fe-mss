@@ -36,6 +36,9 @@ export function useFilter() {
   function handleResetFilter() {
     let _initializedTagList = tagList.map(tag => {
       let _tag = { ...tag };
+      if (_tag.type === 'search') {
+        _tag.keyword = '';
+      }
       _tag.isFiltered = false;
       return _tag;
     });
